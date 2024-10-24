@@ -1,0 +1,35 @@
+﻿<Page x:Class="TestAssignment.CurrencyDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TestAssignment"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CurrencyDetailPage">
+
+    <Grid>
+        <TextBlock Text="Currency Details" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
+
+        <!-- Детальна інформація про криптовалюту -->
+        <StackPanel Margin="20,50,20,20">
+            <TextBlock Text="Name:" FontWeight="Bold"/>
+            <TextBlock x:Name="NameText"/>
+
+            <TextBlock Text="Price (USD):" FontWeight="Bold"/>
+            <TextBlock x:Name="PriceText"/>
+
+            <TextBlock Text="24h Change (%)" FontWeight="Bold"/>
+            <TextBlock x:Name="ChangeText"/>
+
+            <TextBlock Text="Volume:" FontWeight="Bold"/>
+            <TextBlock x:Name="VolumeText"/>
+
+            <TextBlock Text="Markets:" FontWeight="Bold"/>
+            <ListView x:Name="MarketsListView"/>
+        </StackPanel>
+
+        <Button Content="Back" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Click="BackButton_Click"/>
+
+    </Grid>
+</Page>
