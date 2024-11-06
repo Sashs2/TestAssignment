@@ -26,23 +26,33 @@ namespace TestAssignment
         {
             InitializeComponent();
             _crypto = crypto;
-            LoadCurrencyDetails();
+            if (_crypto == null)
+            {
+                //очищення стек-панелі від зайвих полів
+                stackDetail.Visibility = Visibility.Collapsed;
+                CryptoInfoText.Text = "Please select a cryptocurrency.";
+            }
+            else
+            {  
+                LoadCurrencyDetails();
+            }
+           
         }
-
+        
         private void LoadCurrencyDetails()
         {
             NameText.Text = _crypto.Name;
             PriceText.Text = _crypto.Price.ToString();
             ChangeText.Text = _crypto.Change.ToString();
-            VolumeText.Text = "Тут буде обсяг торгів"; // Або з API
+            VolumeText.Text = _crypto.Volume.ToString(); // Або з API
 
             // Тут можна додати інформацію про ринки
-            MarketsListView.ItemsSource = new List<string>
-        {
-            "Binance - $30100",
-            "Coinbase - $30050",
-            "Kraken - $30080"
-        };
+        //    MarketsListView.ItemsSource = new List<string>
+        //{
+        //    "Binance - $30100",
+        //    "Coinbase - $30050",
+        //    "Kraken - $30080"
+        //};
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

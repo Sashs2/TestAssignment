@@ -21,6 +21,8 @@ namespace TestAssignment
     public partial class MainPage : Page
     {
         public List<CryptoCurrency> ?TopCryptos { get; set; }
+     
+
 
         public MainPage()
         {
@@ -28,27 +30,37 @@ namespace TestAssignment
             LoadTopCryptos(); // Завантаження даних
         }
 
-        private void LoadTopCryptos()
+        private async void LoadTopCryptos()
         {
-            // Тут ви можете підключити API для отримання криптовалют
-            // Приклад: завантаження тестових даних
-            TopCryptos = new List<CryptoCurrency>
-        {
-            new CryptoCurrency { Rank = 1, Name = "Bitcoin", Price = 30000, Change = 1.2 },
-            new CryptoCurrency { Rank = 2, Name = "Ethereum", Price = 2000, Change = 2.3 },
-            // додати більше валют
-        };
-
-            cryptoDataGrid.ItemsSource = TopCryptos;
+            try
+            {
+                var topCryptos = await CoinMarketCapService.GetTopCryptocurrenciesAsync();
+                cryptoDataGrid.ItemsSource = topCryptos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading cryptocurrencies: " + ex.Message);
+            }
         }
 
         private void CryptoDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (cryptoDataGrid.SelectedItem is CryptoCurrency selectedCrypto)
             {
+                //Зберігання останньої обраної криптовалюти
+                ((MainWindow)Application.Current.MainWindow).SelectCrypto(selectedCrypto);
                 // Перехід на сторінку детальної інформації
                 NavigationService.Navigate(new CurrencyDetailPage(selectedCrypto));
             }
         }
+
+        //відкрити калькулятор сторінку
+
+        //private void OpenCalculator_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Передаємо список криптовалют у CalculatorPage
+        //    var cryptocurrencies = /* Отримайте список криптовалют зі свого сервісу або іншого джерела */;
+        //    NavigationService.Navigate(new CalculatorPage(cryptocurrencies));
+        //}
     }
 }

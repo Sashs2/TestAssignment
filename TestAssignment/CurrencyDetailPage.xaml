@@ -9,10 +9,10 @@
       Title="CurrencyDetailPage">
 
     <Grid>
-        <TextBlock Text="Currency Details" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
-
+      <TextBlock x:Name="CryptoInfoText" FontSize="18" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+  
         <!-- Детальна інформація про криптовалюту -->
-        <StackPanel Margin="20,50,20,20">
+        <StackPanel  x:Name="stackDetail" Margin="20,50,20,20">
             <TextBlock Text="Name:" FontWeight="Bold"/>
             <TextBlock x:Name="NameText"/>
 
@@ -25,8 +25,7 @@
             <TextBlock Text="Volume:" FontWeight="Bold"/>
             <TextBlock x:Name="VolumeText"/>
 
-            <TextBlock Text="Markets:" FontWeight="Bold"/>
-            <ListView x:Name="MarketsListView"/>
+           
         </StackPanel>
 
         <Button Content="Back" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Click="BackButton_Click"/>

@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:TestAssignment"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <DockPanel>
+        <!-- Верхнє меню -->
+        <Menu DockPanel.Dock="Top">
+            <!--<MenuItem Header="Pages">-->
+                <MenuItem Header="Home" Click="NavigateToHome"/>
+                <MenuItem Header="Calculator" Click="NavigateToCalculator"/>
+                <MenuItem Header="Currency Details" Click="NavigateToCurrencyDetails"/>
+            <!--</MenuItem>-->
+        </Menu>
+
+        <!-- Головний фрейм для навігації -->
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-    </Grid>
+    </DockPanel>
 </Window>
