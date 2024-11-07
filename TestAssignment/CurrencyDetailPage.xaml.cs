@@ -30,7 +30,7 @@ namespace TestAssignment
             {
                 //очищення стек-панелі від зайвих полів
                 stackDetail.Visibility = Visibility.Collapsed;
-                CryptoInfoText.Text = "Please select a cryptocurrency.";
+                CryptoInfoText.Text = "Please return to home and select a cryptocurrency.";
             }
             else
             {  
@@ -55,12 +55,6 @@ namespace TestAssignment
         //};
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();  // Повертає на попередню сторінку
-            }
-        }
+       
     }
 }

@@ -28,7 +28,6 @@
            
         </StackPanel>
 
-        <Button Content="Back" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Click="BackButton_Click"/>
-
+       
     </Grid>
 </Page>

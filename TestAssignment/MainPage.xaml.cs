@@ -35,7 +35,8 @@ namespace TestAssignment
             try
             {
                 var topCryptos = await CoinMarketCapService.GetTopCryptocurrenciesAsync();
-                cryptoDataGrid.ItemsSource = topCryptos;
+                TopCryptos = topCryptos;
+                cryptoDataGrid.ItemsSource = TopCryptos;
             }
             catch (Exception ex)
             {
@@ -54,13 +55,6 @@ namespace TestAssignment
             }
         }
 
-        //відкрити калькулятор сторінку
-
-        //private void OpenCalculator_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // Передаємо список криптовалют у CalculatorPage
-        //    var cryptocurrencies = /* Отримайте список криптовалют зі свого сервісу або іншого джерела */;
-        //    NavigationService.Navigate(new CalculatorPage(cryptocurrencies));
-        //}
+    
     }
 }

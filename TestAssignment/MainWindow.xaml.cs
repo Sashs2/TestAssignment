@@ -42,6 +42,7 @@ namespace TestAssignment
 
         private void NavigateToCurrencyDetails(object sender, RoutedEventArgs e)
         {
+            
             MainFrame.Navigate(new CurrencyDetailPage(lastSelectedCrypto));
         }
         #endregion
@@ -56,10 +57,32 @@ namespace TestAssignment
         // Метод для отримання списку криптовалют
         private List<CryptoCurrency> GetCryptocurrencies()
         {
-            // Завантаження списку криптовалют, може бути з API або іншого джерела
-            return new List<CryptoCurrency> { /* Дані криптовалют */ };
-        }
+            if (MainFrame.Content is MainPage mainPage && mainPage.TopCryptos != null)
+            {
+                return mainPage.TopCryptos;
+            }
 
+            MessageBox.Show("Cryptocurrency data is not available.");
+            return new List<CryptoCurrency>();
+        }
+        //private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter)
+        //    {
+        //        string query = SearchTextBox.Text.ToLower();
+        //        var foundCrypto = cryptocurrencies.FirstOrDefault(c => c.Name.ToLower().Contains(query) || c.Symbol.ToLower().Contains(query));
+
+        //        if (foundCrypto != null)
+        //        {
+        //            // Передаємо знайдений елемент до HomePage для виділення
+        //            MainFrame.Navigate(new MainPage(cryptocurrencies, foundCrypto));
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Cryptocurrency not found.");
+        //        }
+        //    }
+        //}
 
     }
 }

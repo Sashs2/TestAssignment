@@ -9,22 +9,16 @@
       Title="CalculatorPage">
 
     <Grid Margin="20">
-        <TextBlock Text="Cryptocurrency Calculator" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,20"/>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-            <!-- Поле вибору криптовалюти -->
-            <ComboBox x:Name="CryptoComboBox" Width="200" Margin="0,10" SelectionChanged="CryptoComboBox_SelectionChanged">
-                <!-- Список криптовалют буде заповнюватися з коду -->
+            <ComboBox x:Name="CryptoComboBox1" Width="200" Margin="0,10" SelectionChanged="CryptoComboBox_SelectionChanged">
             </ComboBox>
-
-            <!-- Поле вводу кількості -->
-            <TextBox x:Name="AmountTextBox" Width="200" Margin="0,10"/>
-
-            <!-- Кнопка розрахунку -->
+            <TextBox x:Name="AmountTextBox1" Width="200" Margin="0,10"/>
+            <ComboBox x:Name="CryptoComboBox2" Width="200" Margin="0,10" SelectionChanged="CryptoComboBox_SelectionChanged">
+            </ComboBox> 
             <Button Content="Calculate" Width="200" Margin="0,10" Click="CalculateButton_Click"/>
-
-            <!-- Результат розрахунку -->
             <TextBlock x:Name="ResultText" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="0,20"/>
         </StackPanel>
+   
     </Grid>
 </Page>

@@ -20,7 +20,7 @@
                 <DataGridTextColumn Header="24h Change (%)" Binding="{Binding Change}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
-        <!--<Button  Content="Open Calculator" Click="OpenCalculator_Click"/>-->
+   
     </Grid>
     
 </Page>

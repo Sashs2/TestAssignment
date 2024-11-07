@@ -27,7 +27,11 @@ namespace TestAssignment
             InitializeComponent();
             foreach (var crypto in cryptocurrencies)
             {
-                CryptoComboBox.Items.Add(crypto);
+                 CryptoComboBox1.DisplayMemberPath = "Name";
+                CryptoComboBox1.Items.Add(crypto);
+                cryptoPrices[crypto.Name] = crypto.Price;
+                CryptoComboBox2.DisplayMemberPath = "Name";
+                CryptoComboBox2.Items.Add(crypto);
                 cryptoPrices[crypto.Name] = crypto.Price;
             }
         }
@@ -40,13 +44,14 @@ namespace TestAssignment
         // Розрахунок вартості
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CryptoComboBox.SelectedItem is CryptoCurrency selectedCrypto &&
-                decimal.TryParse(AmountTextBox.Text, out decimal amount))
+            if (CryptoComboBox1.SelectedItem is CryptoCurrency cryptoFrom && CryptoComboBox2.SelectedItem is CryptoCurrency cryptoTo && decimal.TryParse(AmountTextBox1.Text, out decimal amount))
             {
-                if (cryptoPrices.TryGetValue(selectedCrypto.Name, out decimal price))
+                // Отримуємо ціну для обох криптовалют
+                if (cryptoPrices.TryGetValue(cryptoFrom.Name, out decimal priceFrom) &&
+                    cryptoPrices.TryGetValue(cryptoTo.Name, out decimal priceTo))
                 {
-                    decimal result = amount * price;
-                    ResultText.Text = $"{amount} {selectedCrypto.Name} is worth {result:C}";
+                    decimal result = (amount * priceFrom) / priceTo;
+                    ResultText.Text = $"{amount} {cryptoFrom.Name} is equivalent to {result:F6} {cryptoTo.Name}";
                 }
                 else
                 {
@@ -55,7 +60,7 @@ namespace TestAssignment
             }
             else
             {
-                ResultText.Text = "Please select a cryptocurrency and enter a valid amount.";
+                ResultText.Text = "Please select both cryptocurrencies and enter a valid amount.";
             }
         }
     }
